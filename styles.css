@@ -1,0 +1,686 @@
+/* ========== GLOBAL STYLES ========== */
+
+/* Default (Dark Mode) -- you can store the dark mode in :root,
+   or store them in a .dark-mode class. 
+   We'll store the default in :root as dark mode. 
+*/
+:root {
+  --bg-color: #1d1e20;   /* background color */
+  --text-color: #fff; /* text color */
+  --card-bg: #2e2e33;    /* background for cards / tiles */
+  --card-hover-bg: #2e2e33;
+  --border-color: rgba(128, 128, 128, 0.2); /* More subtle gray with opacity */
+  --link-hover: #ccc;
+  color-scheme: dark light; /* Helps prevent white flash in dark mode */
+  --gray-text: #8b8b8b;  /* Gray for dark mode */
+}
+
+/* We'll define a .light-mode class to override these vars */
+.light-mode {
+  --bg-color: #f5f5f5;    
+  --text-color: #000;
+  --card-bg: #fff;   /* Changed from #f2f2f2 to white */
+  --card-hover-bg: #fff;  /* Changed from #e6e6e6 to white */
+  --border-color: rgba(128, 128, 128, 0.2); /* Same subtle gray for light mode */
+  --link-color: #1a0dab;
+  --link-hover-color: #551a8b;
+  --gray-text: #666666;  /* Darker gray for light mode */
+}
+
+/* Apply these variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 45px; /* Reduced from 52px */
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.3s, background 0.3s;
+}
+
+/* Header / Navbar */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 10%; /* Reduced from 0.5rem */
+  background: var(--bg-color);
+  position: fixed; /* Change from relative to fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure header stays above other content */
+  transition: background-color 0.3s ease;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li a {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0;
+}
+
+.main-paragraph {
+  color: var(--gray-text);
+}  
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: transparent;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 0; /* Remove the extra margin */
+}
+  
+.logo-img {
+  height: 35px;
+  width: auto;
+  display: block; /* Remove any extra space */
+}  
+
+.logo-container {
+  display: flex;
+  align-items: center; /* Keep items vertically centered */
+  gap: 4px;
+  text-decoration: none;
+  position: relative;
+  padding-right: 28px;
+  height: 35px; /* Match logo height */
+}
+  
+.logo-text {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  font-weight: bold;
+  margin: 0;
+  line-height: 35px; /* Match logo height */
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease;
+}
+  
+.social-icons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-top: 0 !important;
+  padding-top: 0px !important;
+  padding-left: 0;
+}
+  
+.social-icon {
+  width: 30px;
+  height: auto;
+  opacity: 0.7;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+/* Specific styles for X logo - only modifying width */
+.social-icon.x-logo {
+  width: 27px;
+  opacity: 0.65;
+}
+
+/* Specific style for Hugging Face logo */
+.social-icon#huggingface-icon {
+  width: 35px;
+  opacity: 0.65;
+}
+
+/* Hover effects for all icons */
+.social-icon:hover {
+  transform: scale(1.1);
+  opacity: 1 !important;
+}
+
+/* Align Blog/Home buttons and Theme Toggle Button */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align everything to the right */
+  gap: 15px; /* Keeps spacing between elements */
+  height: 50px; /* Ensures navbar height remains fixed */
+  margin-right: 20px; /* Add some margin from the right edge */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Consistent spacing between buttons */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-right: 0;
+}
+
+/* Update nav button styles */
+.nav-btn {
+  display: inline-block;
+  padding: 8px 15px; /* Reduced from 10px 15px */
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1;
+  min-width: 80px;
+  text-align: center;
+  transition: opacity 0.3s ease;
+  position: relative;
+  background: transparent;
+  border-radius: 0;
+}
+
+/* Add underline for active state */
+.nav-btn.active {
+  color: var(--text-color);
+}
+
+.nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Adjusted from 6px */
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: background-color 0.3s ease;
+}
+
+/* Update hover state */
+.nav-btn:hover {
+  opacity: 0.7;
+}
+
+/* Hero */
+.hero {
+  background: var(--bg-color);
+  padding: 3rem 15% 1.5rem 15%; /* Increased bottom padding from 1rem */
+  text-align: left;
+}
+
+.hero-text {
+  max-width: none;
+  margin: 0;
+  text-align: left;
+  padding-left: 0; /* Remove the extra padding */
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem !important; /* Reduced from 1rem */
+  padding-bottom: 0px !important;
+}
+
+.hero-text .main-paragraph {
+  margin-bottom: 1.5rem; /* Increased from 1rem */
+  max-width: none;
+}
+
+/* Project Title */
+#project {
+  padding: 1rem 15% 2rem 15%; /* Add back some top padding (was 0) */
+}
+
+#project h2 {
+  display: none; /* Remove "Our Latest Project" heading */
+}
+
+/* Update project card styling for both modes */
+#project a {
+  text-decoration: none;
+  border: none;
+  display: block;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: none;
+  background: #2e2e33; /* Darker background to match Lilian's */
+}
+
+/* Light mode - white background */
+.light-mode #project a {
+  background: #fff;
+}
+
+#project-title {
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+#project h3 {
+  margin-bottom: 0.5rem; /* Increased spacing between title and description */
+}
+
+#project .main-paragraph {
+  margin-bottom: 0.5rem; /* Added spacing between description and date */
+  color: var(--gray-text);
+}
+
+/* Section Headings */
+section {
+  padding: 2rem 15%;
+  max-width: none;
+}
+
+section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease;
+}
+
+/* Remove the border specifically for "Agentica Project" */
+.hero h2 {
+  border-bottom: none !important;
+}
+
+/* Team / Cards */
+.team-group {
+  margin-bottom: 2rem;
+}
+
+.team-group h3 {
+  margin-bottom: 0.5rem; /* Reduced from 1rem */
+  font-size: 1.5rem;
+  color: var(--text-color);
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* Update contributors grid layout */
+.contributors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 160px);
+  gap: 2.5rem;
+  margin-top: 0.5rem; /* Reduced from 1rem */
+  justify-content: center;
+}
+
+/* Update regular team grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 160px);
+  gap: 2.5rem;
+  margin-top: 0.5rem; /* Reduced from 1rem */
+  justify-content: center;
+}
+
+/* Update team member card styling */
+.team-member {
+  background: #2e2e33;
+  border-radius: 6px;
+  text-align: center;
+  width: 160px;
+  height: 170px; /* Reduced from 200px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-member a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 1rem 1rem; /* Reduced bottom padding */
+  height: 100%;
+}
+
+.team-member img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+  margin-bottom: -2rem; /* Adjusted from -3rem */
+}
+
+.team-member h4 {
+  margin-top: 3rem; /* Changed from auto */
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: normal;
+}
+
+.team-member p {
+  color: var(--link-hover);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Contact */
+.contact-list {
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.contact-list li {
+  margin-bottom: 0.75rem;
+}
+
+.contact-list a {
+  color: var(--text-color);
+  border-bottom: 1px dotted var(--text-color);
+  transition: color 0.2s;
+}
+
+.contact-list a:hover {
+  color: var(--link-hover);
+}
+
+/* Blog Cards */
+.blog-card {
+  background: transparent;
+  border-radius: 0;
+  padding: 0.75rem 0;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.blog-card:hover {
+  transform: none;
+  background: transparent;
+}
+
+.blog-card h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  font-weight: normal;
+}
+
+.blog-card p {
+  margin: 0; /* Remove margin to control spacing with padding */
+  color: var(--gray-text);
+}
+
+.blog-card a {
+  color: var(--text-color);
+  font-weight: bold;
+  border-bottom: 1px dotted var(--text-color);
+}
+
+.blog-card a:hover {
+  color: var(--link-hover);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem 2rem; /* Reduced from 2rem */
+  background: var(--bg-color);
+  color: var(--gray-text);
+  border-top: none;
+  margin-top: 1rem; /* Reduced from 2rem */
+  font-size: 0.9rem;
+}
+
+footer p {
+  opacity: 1; /* Remove opacity since we're using the correct gray */
+}
+
+/* ===================== THEME TOGGLE BUTTON ===================== */
+/* Theme Toggle Button - adjusted size */
+.theme-toggle-btn {
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 40px; /* Match logo height */
+  min-width: unset;
+  position: absolute;
+  right: -4px;
+  top: 54%;
+  transform: translateY(-50%);
+  margin: 0;
+  z-index: 1001; /* Ensure it's above the anchor element */
+}
+
+.theme-toggle-btn:hover {
+  opacity: 0.7;
+}
+
+/* Hide the toggle text */
+.theme-toggle-btn .toggle-label {
+  display: none;
+}
+
+.theme-toggle-btn .toggle-icon {
+  margin: 0;
+  font-size: 1.2rem; /* Slightly smaller */
+  line-height: 35px; /* Match logo height */
+}
+
+/* Remove nav-bar right margin since toggle moved */
+.nav-bar {
+  margin-right: 0;
+}
+
+/* Add transitions to other elements that change color */
+.logo-text,
+.nav-btn,
+.blog-card,
+.team-member,
+section h2,
+.main-paragraph,
+.theme-toggle-btn,
+.hero,
+footer {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease;
+}
+
+/* Update all content within sections */
+section > *,
+.hero-text > *,
+.team-group,
+.blog-list {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* Update blog list section */
+.blog-list {
+  padding: 4rem 15% 2rem 15%;
+}
+
+.blog-list h1 {
+  font-size: 2.5rem;  /* Reduced Archive title from 4rem */
+  font-weight: bold;
+  margin-bottom: 3rem;
+  color: var(--text-color);
+}
+
+.year-label {
+  font-size: 4rem;  /* Increased year size from 2.5rem */
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.year-label sup {
+  font-size: 3rem;  /* Adjusted superscript size */
+  vertical-align: super;
+  margin-left: 0.25rem;
+}
+
+.blog-post {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+  margin-bottom: 0.5rem; /* Added margin between posts */
+}
+
+.blog-post:last-child {
+  border-bottom: none;
+  margin-bottom: 0; /* Remove margin from last post */
+}
+
+.blog-post .date h2 {
+  font-size: 1.5rem;  /* Reduced month size from 2rem */
+  font-weight: bold;
+  margin: 0;
+  border: none;
+  min-width: 180px;
+  color: var(--text-color);
+}
+
+.blog-post .date sup {
+  font-size: 0.8rem;  /* Adjusted month superscript */
+  vertical-align: super;
+  margin-left: 0.25rem;
+}
+
+.post-content h3 {
+  font-size: 1.5rem;  /* Reduced post title from 2rem */
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: var(--gray-text);
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Remove any borders or backgrounds */
+.blog-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* Hover effects */
+.post-content h3:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* Hide the team section heading */
+#team > h2 {
+  display: none;
+}
+
+/* Adjust spacing for team section without heading */
+#team {
+  padding-top: 1rem; /* Reduced padding since we removed the heading */
+}
+
+/* Update for light mode */
+.light-mode .team-member {
+  background: #fff;
+}
+
+.light-mode .team-member:hover {
+  background: #e0e0e0;
+}
+
+/* Update light mode card backgrounds */
+.light-mode .blog-card {
+  background: transparent;
+}
+
+.light-mode .blog-card:hover {
+  background: transparent;
+}
+
+/* Update blog section styling */
+.year-section {
+  margin-top: 2rem;
+}
+
+.year-header {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.posts-container {
+  display: block;
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.date-label {
+  min-width: 100px;
+  display: flex;
+  align-items: center; /* Center vertically */
+}
+
+.date-label .month {
+  color: var(--text-color);
+  font-size: 1.2rem; /* Increased from 1rem */
+  font-weight: bold;
+}
+
+.date-label .number {
+  display: none;
+}
+
+.blog-card {
+  flex: 1;
+  padding: 0;
+  border-bottom: none;
+}
+
+/* Add year label styling */
+.year-label {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-weight: bold;
+  margin: 1rem 0 0rem 0; /* Reduced top margin from 2rem to 1rem */
+}
+
+/* Remove the year section styles we don't need anymore */
+.year-section, .year-header {
+  display: none;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agentica - Blog</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ========== HEADER / NAVBAR ========== -->
+  <header>
+    <div class="logo" style="position: relative;">
+      <a href="index.html" class="logo-container">
+        <img src="images/agentica_logo/agentica_logo_light.png"
+             alt="Agentica Logo"
+             class="logo-img"
+             id="logo" />
+        <h1 class="logo-text">Agentica</h1>
+      </a>
+      <button class="theme-toggle-btn" id="themeToggleBtn">
+        <span class="toggle-icon">☾</span>
+        <span class="toggle-label">Light Mode</span>
+      </button>
+    </div>
+  
+    <nav class="nav-bar">
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-btn">Home</a></li>
+        <li><a href="blog.html" class="nav-btn active">Blog</a></li>
+      </ul>
+    </nav>      
+  </header>
+  <!-- ========== BLOG POSTS SECTION ========== -->
+  <section class="blog-list">
+    <h1>Archive</h1>
+    
+    <div class="year-label">2025
+    <div class="posts-list">
+      <article class="blog-post">
+        <div class="date">
+          <h2>February<sup>1</sup></h2>
+        </div>
+        <div class="post-content">
+          <h3>DeepScaleR: Surpassing O1-Preview with a 1.5B Model by Scaling RL</h3>
+          <p class="post-meta">Date: February 10, 2025 | Estimated Reading Time: 10 min | Author: Michael Luo, Sijun Tan, Tianjun Zhang</p>
+        </div>
+      </article>
+      <!-- <article class="blog-post">
+        <div class="date">
+          <h2>July<sup>1</sup></h2>
+        </div>
+        <div class="post-content">
+          <h3>I love Teedy, my favorite dog.</h3>
+          <p class="post-meta">Date: January 1, 2025 | Estimated Reading Time: 1200 min | Author: Teedy</p>
+        </div>
+      </article> -->
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p>© 2025 Agentica Project</p>
+  </footer>
+
+  <script>
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const body = document.body;
+  const logo = document.getElementById('logo');
+  const toggleIcon = document.querySelector('.toggle-icon');
+  const toggleLabel = document.querySelector('.toggle-label');
+
+  // Function to update image sources based on theme
+  function updateLogoAndIcons(theme) {
+    if (theme === 'light') {
+      logo.src = "images/agentica_logo/agentica_logo_light.png"; // Light mode logo
+    } else {
+      logo.src = "images/agentica_logo/agentica_logo_dark.png"; // Dark mode logo
+    }
+  }
+
+  // Check stored theme in localStorage
+  let savedTheme = localStorage.getItem('theme');
+
+  // If no theme is set, default to dark
+  if (!savedTheme) {
+    savedTheme = 'dark';
+    localStorage.setItem('theme', 'dark');
+  }
+
+// Apply the stored theme on page load
+if (savedTheme === 'light') {
+  body.classList.add('light-mode');
+  toggleIcon.textContent = '☾'; // Moon icon for light mode
+  toggleLabel.textContent = 'Dark Mode';
+  updateLogoAndIcons('light');
+} else {
+  body.classList.remove('light-mode');
+  toggleIcon.textContent = '☀\uFE0E'; // Sun icon for dark mode with text style modifier
+  toggleLabel.textContent = 'Light Mode';
+  updateLogoAndIcons('dark');
+}
+
+  // Event listener for theme toggle
+  themeToggleBtn.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    let newTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    toggleIcon.textContent = newTheme === 'light' ? '☾' : '☀';
+    toggleLabel.textContent = newTheme === 'light' ? 'Dark Mode' : 'Light Mode';
+    updateLogoAndIcons(newTheme);
+  });
+</script>
+</body>
+</html>
