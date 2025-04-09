@@ -258,7 +258,12 @@ nav ul li a.active {
   padding: 1.5rem;
   border-radius: 6px;
   box-shadow: none;
-  background: #2e2e33; /* Darker background to match Lilian's */
+  background: #2e2e33; /* Darker background */
+  margin-bottom: 20px;
+}
+
+#project a:last-of-type {
+  margin-bottom: 0; /* Removes extra margin after last block */
 }
 
 /* Light mode - white background */
