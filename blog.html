@@ -10,7 +10,7 @@
 
   <!-- ========== HEADER / NAVBAR ========== -->
   <header>
-    <div class="logo" style="position: relative;">
+    <div class="logo">
       <a href="index.html" class="logo-container">
         <img src="images/agentica_logo/agentica_logo_light.png"
              alt="Agentica Logo"
@@ -37,6 +37,22 @@
     
     <div class="year-label">2025
     <div class="posts-list">
+
+    <article class="blog-post">
+      <div class="date">
+        <h2>Oct<sup>2</sup></h2>
+      </div>
+      <div class="post-content">
+        <h3>
+          <a href="post.html?post=pepper.md">
+            Pepper: A Real-time, Event-Driven Architecture for Proactive Agentic Systems
+          </a>
+        </h3>
+        <p class="post-meta">
+          Oct 2, 2025 | 13 min read | Tianhao Wu, Sijun Tan
+        </p>
+      </div>
+    </article>
 
     <article class="blog-post">
       <div class="date">
@@ -72,7 +88,7 @@
 
     <article class="blog-post">
       <div class="date">
-        <h2>April<sup>1</sup></h2>
+        <h2>April<sup>8</sup></h2>
       </div>
       <div class="post-content">
         <h3>
@@ -124,10 +140,10 @@
   // Check stored theme in localStorage
   let savedTheme = localStorage.getItem('theme');
 
-  // If no theme is set, default to dark
+  // If no theme is set, default to light
   if (!savedTheme) {
-    savedTheme = 'dark';
-    localStorage.setItem('theme', 'dark');
+    savedTheme = 'light';
+    localStorage.setItem('theme', 'light');
   }
 
 // Apply the stored theme on page load

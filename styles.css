@@ -89,8 +89,9 @@ nav ul li a.active {
   display: flex;
   align-items: center;
   margin-left: 0; /* Remove the extra margin */
-}
-  
+  position: relative;
+}  
+
 .logo-img {
   height: 35px;
   width: auto;
@@ -102,9 +103,8 @@ nav ul li a.active {
   align-items: center; /* Keep items vertically centered */
   gap: 4px;
   text-decoration: none;
-  position: relative;
-  padding-right: 28px;
   height: 35px; /* Match logo height */
+  margin-right: 32px; /* Add space for the theme toggle button */
 }
   
 .logo-text {
@@ -326,7 +326,7 @@ section h2 {
 /* Update contributors grid layout */
 .contributors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 160px);
+  grid-template-columns: repeat(auto-fit, 180px);
   gap: 2.5rem;
   margin-top: 0.5rem; /* Reduced from 1rem */
   justify-content: center;
@@ -335,7 +335,7 @@ section h2 {
 /* Update regular team grid */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 160px);
+  grid-template-columns: repeat(auto-fit, 180px);
   gap: 2.5rem;
   margin-top: 0.5rem; /* Reduced from 1rem */
   justify-content: center;
@@ -346,7 +346,7 @@ section h2 {
   background: #2e2e33;
   border-radius: 6px;
   text-align: center;
-  width: 160px;
+  width: 170px;
   height: 170px; /* Reduced from 200px */
   display: flex;
   flex-direction: column;
@@ -470,14 +470,14 @@ footer p {
   align-items: center;
   justify-content: center;
   width: 24px;
-  height: 40px; /* Match logo height */
+  height: 35px; /* Match logo height */
   min-width: unset;
   position: absolute;
-  right: -4px;
-  top: 54%;
+  right: 0;
+  top: 50%;
   transform: translateY(-50%);
   margin: 0;
-  z-index: 1001; /* Ensure it's above the anchor element */
+  z-index: 1001;
 }
 
 .theme-toggle-btn:hover {

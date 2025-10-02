@@ -17,11 +17,11 @@
       <a href="index.html" class="logo-container">
         <img src="images/agentica_logo/agentica_logo_light.png" alt="Agentica Logo" class="logo-img" id="logo">
         <h1 class="logo-text">Agentica</h1>
-        <button class="theme-toggle-btn" id="themeToggleBtn">
-          <span class="toggle-icon">☾</span>
-          <span class="toggle-label">Light Mode</span>
-        </button>
-      </a>          
+      </a>
+      <button class="theme-toggle-btn" id="themeToggleBtn">
+        <span class="toggle-icon">☾</span>
+        <span class="toggle-label">Light Mode</span>
+      </button>          
     </div>
     <nav class="nav-bar">
       <ul class="nav-links">
@@ -39,17 +39,17 @@
         We are a open-source initiative spawning from Berkeley Sky Computing Lab to democratize reinforcement learning (RL) techniques and develop scalable systems for large language models (LLMs) and agents.
       </p>
       <div class="social-icons">
-        <a href="mailto:agenticaproject@gmail.com">
+        <a href="mailto:sijuntan@berkeley.edu">
           <img id="email-icon" src="images/contact_icons/email_light.png" alt="Email" class="social-icon">
         </a>
-        <a href="https://github.com/agentica-project">
+        <a href="https://github.com/rllm-org/rllm">
           <img id="github-icon" src="images/contact_icons/github_light.png" alt="GitHub" class="social-icon">
         </a>
         <a href="https://x.com/agentica_">
           <img id="x-icon" src="images/contact_icons/x_light.png" alt="Twitter" class="social-icon x-logo">
         </a>
         <a href="https://huggingface.co/agentica-org">
-          <img id="huggingface-icon" src="images/contact_icons/huggingface_light.png" alt="Hugging Face" class="social-icon">
+          <img id="huggingface-icon" src="images/contact_icons/huggingface_light.svg" alt="Hugging Face" class="social-icon">
         </a>
       </div>
     </div>
@@ -57,6 +57,15 @@
 
   <!-- ========== PROJECT SECTION ========== -->
   <section id="project">
+    <!-- Pepper -->
+    <a href="post.html?post=pepper.md" rel="noopener noreferrer">
+      <h3>Pepper: A Real-time, Event-Driven Architecture for Proactive Agentic Systems</h3>
+      <p class="main-paragraph">
+        We introduce Pepper, a real-time, event-driven architecture enabling the next generation of proactive agentic systems. With Pepper, we built a personal assistant that proactively fetches and summarizes emails, provides context before you even start a conversation, and continues to follow up while working on tasks. We open-source Pepper to advance the creation of proactive agentic systems.
+      </p>
+      <div class="post-meta">Date: October 2, 2025 | Estimated Reading Time: 13 min | Author: Tianhao Wu, Sijun Tan</div>
+    </a>
+    <!-- rLLM -->
     <a href="https://pretty-radio-b75.notion.site/rLLM-A-Framework-for-Post-Training-Language-Agents-21b81902c146819db63cd98a54ba5f31" rel="noopener noreferrer">
       <h3>rLLM: Reinforcement Learning for Language Agents</h3>
       <p class="main-paragraph">
@@ -75,7 +84,7 @@
       <p class="main-paragraph">
         We release DeepCoder-14B-Preview, a code reasoning model finetuned from Deepseek-R1-Distilled-Qwen-14B via distributed RL. It achieves an impressive 60.6% Pass@1 accuracy on LiveCodeBench (+8% improvement), matching the performance of o3-mini-2025-01-031 (Low) and o1-2024-12-17 with just 14B parameters.
       </p>
-      <div class="post-meta">Date: July 1, 2025 | Estimated Reading Time: 15 min | Author: Michael Luo, Sijun Tan, Roy Huang</div>
+      <div class="post-meta">Date: April 8, 2025 | Estimated Reading Time: 15 min | Author: Michael Luo, Sijun Tan, Roy Huang</div>
     </a>
     <a href="https://pretty-radio-b75.notion.site/DeepScaleR-Surpassing-O1-Preview-with-a-1-5B-Model-by-Scaling-RL-19681902c1468005bed8ca303013a4e2" rel="noopener noreferrer">
       <h3>DeepScaleR: Surpassing O1-Preview with a 1.5B Model by Scaling RL</h3>
@@ -88,19 +97,10 @@
 
   <!-- ========== TEAM SECTION ========== -->
   <section id="team">
-    <!-- Core Contributors -->
+    <!-- Project Lead -->
     <div class="team-group">
-      <h3>Core Contributors</h3>
+      <h3>Project Leads</h3>
       <div class="team-grid">
-        <!-- Michael Luo -->
-        <div class="team-member">
-          <!-- The entire tile is a link -->
-          <a href="https://michaelzhiluo.github.io/" target="_blank" rel="noopener noreferrer">
-            <img src="images/people/michael_luo.jpg" alt="Michael Luo" />
-            <h4>Michael Luo</h4>
-          </a>
-        </div>
-
         <!-- Sijun Tan -->
         <div class="team-member">
           <a href="https://jeffreysijuntan.github.io/" target="_blank" rel="noopener noreferrer">
@@ -108,13 +108,69 @@
             <h4>Sijun Tan</h4>
           </a>
         </div>
+
+        <!-- Tianhao Wu -->
+        <div class="team-member">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/tianhao_wu.png" alt="Tianhao Wu" />
+            <h4>Tianhao Wu</h4>
+          </a>
+        </div>
+
+        <!-- Kyle Montgomery -->
+        <div class="team-member">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/kyle.png" alt="Kyle Montgomery" />
+            <h4>Kyle Montgomery</h4>
+          </a>
+        </div>
       </div>
     </div>
 
-    <!-- Contributors -->
+    <!-- Members -->
     <div class="team-group">
-      <h3>Contributors</h3>
+      <h3>Members</h3>
       <div class="team-grid contributors-grid">
+
+        <!-- Manan Roongta -->
+        <div class="team-member">
+          <a href="https://www.linkedin.com/in/mananroongta/" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/manan_roongta.jpg" alt="Manan Roongta" />
+            <h4>Manan Roongta</h4>
+          </a>
+        </div>
+
+        <!-- Jason Wei -->
+        <div class="team-member">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/jason_wei.png" alt="Jason Wei" />
+            <h4>Jason Wei</h4>
+          </a>
+        </div>
+
+        <!-- Yuqi Chen -->
+        <div class="team-member">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/yuqi_chen.png" alt="Yuqi Chen" />
+            <h4>Yuqi Chen</h4>
+          </a>
+        </div>
+
+        <!-- Julie Shi -->
+        <div class="team-member">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/julie.png" alt="Julie Shi" />
+            <h4>Julie Shi</h4>
+          </a>
+        </div>
+
+        <!-- Jeewoo Lee -->
+        <div class="team-member">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/jeewoo.png" alt="Jeewoo Lee" />
+            <h4>Jeewoo Lee</h4>
+          </a>
+        </div>
 
         <!-- Naman -->
         <div class="team-member">
@@ -129,6 +185,69 @@
           <a href="https://1jsingh.github.io/" target="_blank" rel="noopener noreferrer">
             <img src="images/people/jas.jpg" alt="Jaskirat Singh" />
             <h4>Jaskirat Singh</h4>
+          </a>
+        </div>
+
+        <!-- Justin Wong -->
+        <div class="team-member">
+          <a href="https://people.eecs.berkeley.edu/~wong.justin/" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/justin_wong.jpg" alt="Justin Wong" />
+            <h4>Justin Wong</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advisors -->
+    <div class="team-group">
+      <h3>Advisors</h3>
+      <div class="team-grid">
+
+        <!-- Chenguang Wang -->
+        <div class="team-member">
+          <a href="https://cgraywang.github.io/" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/chenguang_wang.jpeg" alt="Chenguang Wang" />
+            <h4>Chenguang Wang</h4>
+          </a>
+        </div>
+
+        <!-- Erran Li -->
+        <div class="team-member">
+          <a href="https://www.cs.columbia.edu/~lierranli/" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/erran_li.jpeg" alt="Li Erran Li" />
+            <h4>Li Erran Li</h4>
+          </a>
+        </div>
+
+        <!-- Raluca Popa -->
+        <div class="team-member">
+          <a href="https://people.eecs.berkeley.edu/~raluca/" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/raluca_popa.png" alt="Raluca Ada Popa" />
+            <h4>Raluca Ada Popa</h4>
+          </a>
+        </div>
+
+        <!-- Ion Stoica -->
+        <div class="team-member">
+          <a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/ion_stoica.png" alt="Ion Stoica" />
+            <h4>Ion Stoica</h4>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Alumni -->
+    <div class="team-group">
+      <h3>Alumni</h3>
+      <div class="team-grid">
+        <!-- Michael Luo -->
+        <div class="team-member">
+          <!-- The entire tile is a link -->
+          <a href="https://michaelzhiluo.github.io/" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/michael_luo.jpg" alt="Michael Luo" />
+            <h4>Michael Luo</h4>
           </a>
         </div>
 
@@ -156,20 +275,19 @@
           </a>
         </div>
 
-
-        <!-- Justin Wong -->
-        <div class="team-member">
-          <a href="https://people.eecs.berkeley.edu/~wong.justin/" target="_blank" rel="noopener noreferrer">
-            <img src="images/people/justin_wong.jpg" alt="Justin Wong" />
-            <h4>Justin Wong</h4>
-          </a>
-        </div>
-
         <!-- Vishal Satish -->
         <div class="team-member">
           <a href="https://www.linkedin.com/in/vishalsatish/" target="_blank" rel="noopener noreferrer">
             <img src="images/people/vishal.jpeg" alt="Vishal Satish" />
             <h4>Vishal Satish</h4>
+          </a>
+        </div>
+
+        <!-- Jeffrey Luo -->
+        <div class="team-member">
+          <a href="https://www.linkedin.com/in/jeffrey-luo-a4929126a" target="_blank" rel="noopener noreferrer">
+            <img src="images/people/jeffrey_luo.jpeg" alt="Jeffrey Luo" />
+            <h4>Jeffrey Luo</h4>
           </a>
         </div>
 
@@ -181,51 +299,6 @@
           </a>
         </div>
 
-        <!-- Manan Roongta -->
-        <div class="team-member">
-          <a href="https://www.linkedin.com/in/mananroongta/" target="_blank" rel="noopener noreferrer">
-            <img src="images/people/manan_roongta.jpg" alt="Manan Roongta" />
-            <h4>Manan Roongta</h4>
-          </a>
-        </div>
-
-        <!-- Jeffrey Luo -->
-        <div class="team-member">
-          <a href="https://www.linkedin.com/in/jeffrey-luo-a4929126a" target="_blank" rel="noopener noreferrer">
-            <img src="images/people/jeffrey_luo.jpeg" alt="Jeffrey Luo" />
-            <h4>Jeffrey Luo</h4>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Advisors -->
-    <div class="team-group">
-      <h3>Advisors</h3>
-      <div class="team-grid">
-        <!-- Erran Li -->
-        <div class="team-member">
-          <a href="https://www.cs.columbia.edu/~lierranli/" target="_blank" rel="noopener noreferrer">
-            <img src="images/people/erran_li.jpeg" alt="Li Erran Li" />
-            <h4>Li Erran Li</h4>
-          </a>
-        </div>
-
-        <!-- Raluca Popa -->
-        <div class="team-member">
-          <a href="https://people.eecs.berkeley.edu/~raluca/" target="_blank" rel="noopener noreferrer">
-            <img src="images/people/raluca_popa.png" alt="Raluca Ada Popa" />
-            <h4>Raluca Ada Popa</h4>
-          </a>
-        </div>
-
-        <!-- Ion Stoica -->
-        <div class="team-member">
-          <a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener noreferrer">
-            <img src="images/people/ion_stoica.png" alt="Ion Stoica" />
-            <h4>Ion Stoica</h4>
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -265,10 +338,10 @@
     // Check stored theme in localStorage
     let savedTheme = localStorage.getItem('theme');
 
-    // If no theme is set, default to dark mode
+    // If no theme is set, default to light mode
     if (!savedTheme) {
-        savedTheme = 'dark';
-        localStorage.setItem('theme', 'dark');
+        savedTheme = 'light';
+        localStorage.setItem('theme', 'light');
     }
 
     // Apply the stored theme on page load

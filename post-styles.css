@@ -1,0 +1,618 @@
+/* ========== BLOG POST SPECIFIC STYLES ========== */
+
+/* Blog post container */
+.blog-post-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem 2rem;
+  line-height: 1.65;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 16px;
+}
+
+/* Post header */
+.post-header {
+  margin-bottom: 0rem;
+  padding-bottom: 0rem;
+}
+
+.post-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  line-height: 1.2;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.post-author {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.post-date-reading {
+  color: var(--gray-text);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.post-meta {
+  color: var(--gray-text);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* Post header link buttons */
+.post-header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.post-header-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.post-header-link:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .post-header-link:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Blog Post Wrapper - Container for sidebar and main content */
+.blog-post-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Left Sidebar TOC */
+.toc-sidebar {
+  position: fixed;
+  left: max(1rem, calc(50vw - 700px - 260px));
+  top: 50%;
+  transform: translateY(-50%);
+  width: 240px;
+  max-height: calc(80vh);
+  overflow-y: auto;
+  padding: 0 1.5rem 0 1rem;
+  background: transparent;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  z-index: 10;
+}
+
+.toc-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.toc-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
+  opacity: 0.5;
+}
+
+.toc-nav {
+  position: sticky;
+  top: 0;
+  display: block;
+  width: 100%;
+}
+
+.toc-header-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color);
+  opacity: 0.5;
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+#table-of-contents {
+  display: block;
+  width: 100%;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.toc-list li {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+}
+
+.toc-list li.toc-h2 {
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+.toc-list li.toc-h2:first-child {
+  margin-top: 0;
+}
+
+.toc-list li.toc-h3 {
+  padding-left: 0;
+  margin-top: 0.1rem;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+}
+
+.toc-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  display: block;
+  padding: 0.3rem 0.75rem;
+  opacity: 0.6;
+  line-height: 1.4;
+  border-left: 2px solid transparent;
+  margin-left: 0;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.toc-h2 .toc-link {
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.toc-h3 .toc-link {
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding-left: 1.25rem;
+}
+
+.toc-link:hover {
+  opacity: 1;
+  color: var(--text-color);
+  background: rgba(128, 128, 128, 0.1);
+  border-radius: 4px;
+}
+
+.toc-link.active {
+  opacity: 1;
+  color: var(--text-color);
+  border-left-color: var(--text-color);
+  font-weight: 600;
+  background: rgba(128, 128, 128, 0.08);
+  border-radius: 4px;
+}
+
+/* Main content styling */
+.post-content {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-color);
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.3;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.post-content h1 {
+  font-size: 1.875rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.post-content h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3rem;
+}
+
+.post-content h3 {
+  font-size: 1.25rem;
+}
+
+.post-content h4 {
+  font-size: 1.125rem;
+}
+
+.post-content h5 {
+  font-size: 1rem;
+}
+
+.post-content h6 {
+  font-size: 0.875rem;
+}
+
+/* Paragraphs */
+.post-content p {
+  margin-bottom: 1.2rem;
+  color: var(--text-color);
+}
+
+/* Links */
+.post-content a {
+  color: var(--text-color);
+  text-decoration: underline;
+  text-decoration-color: var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.post-content a:hover {
+  color: var(--link-hover);
+  text-decoration-color: var(--link-hover);
+}
+
+/* Lists */
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.post-content ul ul,
+.post-content ol ol,
+.post-content ul ol,
+.post-content ol ul {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Blockquotes */
+.post-content blockquote {
+  border-left: 4px solid var(--border-color);
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  background: var(--card-bg);
+  font-style: italic;
+  color: var(--gray-text);
+}
+
+.post-content blockquote p {
+  margin-bottom: 0;
+}
+
+/* Aside elements (like TL;DR) */
+.post-content aside {
+  border-left: 4px solid var(--border-color);
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: 6px;
+}
+
+.post-content aside h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: none;
+}
+
+/* Code blocks */
+.post-content pre {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  overflow-x: auto;
+  font-size: 0.875em;
+  line-height: 1.6;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Override highlight.js background */
+.post-content pre code {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Ensure consistent font size for all syntax-highlighted elements */
+.post-content pre code * {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+.post-content pre .hljs-keyword,
+.post-content pre .hljs-function,
+.post-content pre .hljs-variable,
+.post-content pre .hljs-string,
+.post-content pre .hljs-number,
+.post-content pre .hljs-class,
+.post-content pre .hljs-title,
+.post-content pre .hljs-params,
+.post-content pre .hljs-comment,
+.post-content pre .hljs-built_in,
+.post-content pre .hljs-literal,
+.post-content pre .hljs-attr,
+.post-content pre .hljs-tag,
+.post-content pre .hljs-name,
+.post-content pre .hljs-selector-tag,
+.post-content pre .hljs-selector-id,
+.post-content pre .hljs-selector-class {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: normal !important;
+}
+
+.post-content code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+}
+
+/* Inline code */
+.post-content p code,
+.post-content li code,
+.post-content h1 code,
+.post-content h2 code,
+.post-content h3 code,
+.post-content h4 code,
+.post-content h5 code,
+.post-content h6 code {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 0.15em 0.3em;
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+/* Tables */
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+}
+
+.post-content th,
+.post-content td {
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.post-content th {
+  background: var(--card-bg);
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.post-content td {
+  color: var(--text-color);
+}
+
+/* Images */
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Figure with caption */
+.post-content figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.post-content figure img {
+  margin: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-content figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--gray-text);
+  text-align: left;
+  font-style: italic;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  padding: 0;
+}
+
+/* Horizontal rules */
+.post-content hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 3rem 0;
+}
+
+/* Math expressions */
+.post-content .MathJax {
+  font-size: 1.1em !important;
+}
+
+/* Citation section */
+.citation-section {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border-color);
+}
+
+.citation-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.citation-section p {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.citation-section pre {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0 2rem 0;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .toc-sidebar {
+    display: none !important;
+  }
+  
+  .blog-post-container {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-post-container {
+    padding: 1rem;
+  }
+  
+  .post-header h1 {
+    font-size: 1.7rem;
+  }
+  
+  .post-content {
+    font-size: 0.95rem;
+  }
+  
+  .post-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .post-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .post-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .post-content pre {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .post-content ul,
+  .post-content ol {
+    padding-left: 1.5rem;
+  }
+  
+  .post-content figcaption {
+    font-size: 0.8rem;
+    padding: 0;
+  }
+}
+
+/* Light mode adjustments */
+.light-mode .post-content blockquote {
+  background: #f8f9fa;
+}
+
+.light-mode .post-content aside {
+  background: #f8f9fa;
+}
+
+.light-mode .post-content pre {
+  background: #f8f9fa !important;
+}
+
+.light-mode .post-content p code,
+.light-mode .post-content li code,
+.light-mode .post-content h1 code,
+.light-mode .post-content h2 code,
+.light-mode .post-content h3 code,
+.light-mode .post-content h4 code,
+.light-mode .post-content h5 code,
+.light-mode .post-content h6 code {
+  background: #f8f9fa;
+}
+
+.light-mode .post-content th {
+  background: #f8f9fa;
+}
+
+.light-mode .citation-section pre {
+  background: #f8f9fa;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Highlight targeted headings */
+.post-content h1:target,
+.post-content h2:target,
+.post-content h3:target,
+.post-content h4:target,
+.post-content h5:target,
+.post-content h6:target {
+  background: var(--card-bg);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  transition: background 0.3s ease;
+} 

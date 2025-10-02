@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Agentica - Blog Post</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="post-styles.css" />
+  <!-- Add favicon -->
+  <link rel="icon" type="image/x-icon" href="images/agentica_logo/favicon.ico">
+  <!-- Include marked.js for markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Include highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" id="highlight-theme">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <!-- Include MathJax for math rendering -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- ========== HEADER / NAVBAR ========== -->
+  <header>
+    <div class="logo">
+      <a href="index.html" class="logo-container">
+        <img src="images/agentica_logo/agentica_logo_light.png" alt="Agentica Logo" class="logo-img" id="logo">
+        <h1 class="logo-text">Agentica</h1>
+      </a>
+      <button class="theme-toggle-btn" id="themeToggleBtn">
+        <span class="toggle-icon">☾</span>
+        <span class="toggle-label">Light Mode</span>
+      </button>          
+    </div>
+    <nav class="nav-bar">
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-btn">Home</a></li>
+        <li><a href="blog.html" class="nav-btn active">Blog</a></li> 
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========== BLOG POST CONTENT ========== -->
+  <div class="blog-post-wrapper">
+    <!-- Left Sidebar TOC -->
+    <aside class="toc-sidebar" id="toc-sidebar" style="display: none;">
+      <nav class="toc-nav">
+        <div class="toc-header-label">Contents</div>
+        <div id="table-of-contents"></div>
+      </nav>
+    </aside>
+    
+    <!-- Main Article Content -->
+    <article class="blog-post-container">
+      <div class="post-header">
+        <h1 id="post-title">Loading...</h1>
+        <div class="post-author" id="post-author">Loading...</div>
+        <div class="post-date-reading">
+          <span id="post-date">Loading...</span> | <span id="post-reading-time">Loading...</span>
+        </div>
+      </div>
+      
+      <!-- Post header links -->
+      <div class="post-header-links" id="post-header-links" style="display: none;"></div>
+      
+      <!-- Main content will be populated by JavaScript -->
+      <div class="post-content" id="post-content">
+        <p>Loading blog post...</p>
+      </div>
+      
+      <!-- Citation section -->
+      <div class="citation-section" id="citation-section" style="display: none;">
+        <h2>Citation</h2>
+        <p>Cite this blog post as:</p>
+        <pre id="citation-text"></pre>
+        <p>Or use the BibTex citation:</p>
+        <pre id="bibtex-citation"></pre>
+      </div>
+    </article>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p>© 2025 Agentica Project</p>
+  </footer>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const body = document.body;
+    const logo = document.getElementById('logo');
+    const toggleIcon = document.querySelector('.toggle-icon');
+    const toggleLabel = document.querySelector('.toggle-label');
+    const highlightTheme = document.getElementById('highlight-theme');
+
+    // Function to update image sources and highlight theme based on theme
+    function updateTheme(theme) {
+        if (theme === 'light') {
+            logo.src = "images/agentica_logo/agentica_logo_light.png";
+            highlightTheme.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+        } else {
+            logo.src = "images/agentica_logo/agentica_logo_dark.png";
+            highlightTheme.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css";
+        }
+    }
+
+    // Check stored theme in localStorage
+    let savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+        savedTheme = 'light';
+        localStorage.setItem('theme', 'light');
+    }
+
+    // Apply the stored theme on page load
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        toggleIcon.textContent = '☾';
+        toggleLabel.textContent = 'Dark Mode';
+        updateTheme('light');
+    } else {
+        body.classList.remove('light-mode');
+        toggleIcon.textContent = '☀\uFE0E';
+        toggleLabel.textContent = 'Light Mode';
+        updateTheme('dark');
+    }
+
+    // Event listener for theme toggle
+    themeToggleBtn.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        let newTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+        localStorage.setItem('theme', newTheme);
+        toggleIcon.textContent = newTheme === 'light' ? '☾' : '☀\uFE0E';
+        toggleLabel.textContent = newTheme === 'light' ? 'Dark Mode' : 'Light Mode';
+        updateTheme(newTheme);
+    });
+
+    // Configure MathJax
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        packages: {'[+]': ['ams', 'newcommand', 'configmacros', 'base']},
+        macros: {
+          KL: "\\text{KL}"
+        }
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          MathJax.startup.promise.then(() => {
+            console.log('MathJax initial typesetting complete');
+          });
+        }
+      }
+    };
+
+    // Configure marked.js
+    marked.setOptions({
+      highlight: function(code, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(code, { language: lang }).value;
+          } catch (err) {}
+        }
+        return hljs.highlightAuto(code).value;
+      },
+      breaks: false,
+      gfm: true
+    });
+
+    // Function to generate table of contents
+    function generateTOC(content) {
+      const headings = content.querySelectorAll('h2, h3');
+      if (headings.length === 0) return;
+
+      const toc = document.getElementById('table-of-contents');
+      const tocSidebar = document.getElementById('toc-sidebar');
+      
+      let tocHTML = '<ul class="toc-list">';
+      
+      headings.forEach((heading, index) => {
+        const id = `heading-${index}`;
+        heading.id = id;
+        
+        const level = parseInt(heading.tagName.charAt(1));
+        
+        // Clean up heading text
+        let headingText = heading.textContent.trim();
+        
+        // Create class based on heading level
+        const levelClass = level === 2 ? 'toc-h2' : 'toc-h3';
+        
+        tocHTML += `<li class="${levelClass}"><a href="#${id}" class="toc-link" data-target="${id}">${headingText}</a></li>`;
+      });
+      
+      tocHTML += '</ul>';
+      toc.innerHTML = tocHTML;
+      tocSidebar.style.display = 'block';
+      
+      // Add click handlers and scroll spy
+      setupTOCScrollSpy(headings);
+    }
+
+    // Function to handle scroll spy for TOC
+    function setupTOCScrollSpy(headings) {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      
+      // Add smooth scrolling
+      tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('data-target');
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+      
+      // Intersection Observer for active section
+      const observerOptions = {
+        root: null,
+        rootMargin: '-80px 0px -80% 0px',
+        threshold: 0
+      };
+      
+      const observerCallback = (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.toc-link[data-target="${entry.target.id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+          }
+        });
+      };
+      
+      const observer = new IntersectionObserver(observerCallback, observerOptions);
+      headings.forEach(heading => observer.observe(heading));
+    }
+
+    // Function to estimate reading time
+    function estimateReadingTime(text) {
+      const wordsPerMinute = 200;
+      const words = text.trim().split(/\s+/).length;
+      const minutes = Math.ceil(words / wordsPerMinute);
+      return `${minutes} min`;
+    }
+
+    // Function to generate citation
+    function generateCitation(title, author, date, url, citationKey = null) {
+      // Parse date as local to avoid timezone issues
+      const [year, month, day] = date.split('-').map(num => parseInt(num, 10));
+      const dateObj = new Date(year, month - 1, day);
+      const yearStr = dateObj.getFullYear();
+      const monthStr = dateObj.toLocaleDateString('en-US', { month: 'long' });
+      
+      // Use custom citation key if provided, otherwise auto-generate
+      const bibtexKey = citationKey || `agentica${yearStr}${title.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+      
+      const citation = `${author}. "${title}". Agentica Blog (${monthStr} ${yearStr}). ${url}`;
+      const bibtex = `@article{${bibtexKey},
+  title = {${title}},
+  author = {${author}},
+  journal = {Agentica Blog},
+  year = {${yearStr}},
+  month = {${monthStr}},
+  url = "${url}"
+}`;
+
+      document.getElementById('citation-text').textContent = citation;
+      document.getElementById('bibtex-citation').textContent = bibtex;
+      document.getElementById('citation-section').style.display = 'block';
+    }
+
+    // Function to load and render markdown
+    async function loadMarkdown() {
+      try {
+        // Get the markdown file from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const markdownFile = urlParams.get('post');
+        
+        if (!markdownFile) {
+          document.getElementById('post-content').innerHTML = '<p>No blog post specified. Please provide a ?post=filename.md parameter.</p>';
+          return;
+        }
+
+        // Fetch the markdown file
+        const response = await fetch(`posts/${markdownFile}`);
+        if (!response.ok) {
+          throw new Error(`Failed to load ${markdownFile}`);
+        }
+        
+        const markdownText = await response.text();
+        
+        // Parse frontmatter (if exists)
+        let content = markdownText;
+        let metadata = {};
+        
+        if (markdownText.startsWith('---')) {
+          const frontmatterEnd = markdownText.indexOf('---', 3);
+          if (frontmatterEnd !== -1) {
+            const frontmatter = markdownText.slice(3, frontmatterEnd).trim();
+            content = markdownText.slice(frontmatterEnd + 3).trim();
+            
+            // Simple frontmatter parsing
+            frontmatter.split('\n').forEach(line => {
+              const [key, ...valueParts] = line.split(':');
+              if (key && valueParts.length > 0) {
+                metadata[key.trim()] = valueParts.join(':').trim().replace(/^["']|["']$/g, '');
+              }
+            });
+          }
+        }
+        
+        // Update page metadata
+        const title = metadata.title || 'Blog Post';
+        const author = metadata.author || 'Agentica Team';
+        const authorLine = metadata.author_line || author;
+        const date = metadata.date || new Date().toISOString().split('T')[0];
+        const citationKey = metadata.citation_key || null;
+        const readingTime = estimateReadingTime(content);
+        
+        // Format date nicely - parse as local date to avoid timezone issues
+        const [year, month, day] = date.split('-').map(num => parseInt(num, 10));
+        const dateObj = new Date(year, month - 1, day); // month is 0-indexed
+        const formattedDate = dateObj.toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'short', 
+          day: 'numeric' 
+        });
+        
+        document.getElementById('page-title').textContent = `${title} - Agentica`;
+        document.getElementById('post-title').textContent = title;
+        document.getElementById('post-author').textContent = authorLine;
+        document.getElementById('post-date').textContent = formattedDate;
+        document.getElementById('post-reading-time').textContent = `${readingTime} read`;
+        
+        // Render header links if they exist
+        const linkContainer = document.getElementById('post-header-links');
+        const linkTypes = ['github', 'website', 'demo', 'paper', 'huggingface', 'modelscope', 'arxiv', 'colab'];
+        let hasLinks = false;
+        
+        linkTypes.forEach(linkType => {
+          const url = metadata[linkType];
+          if (url) {
+            hasLinks = true;
+            const link = document.createElement('a');
+            link.href = url;
+            link.className = 'post-header-link';
+            link.textContent = linkType.toUpperCase();
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            linkContainer.appendChild(link);
+          }
+        });
+        
+        if (hasLinks) {
+          linkContainer.style.display = 'flex';
+        }
+        
+        // Render markdown to HTML
+        const htmlContent = marked.parse(content);
+        const contentDiv = document.getElementById('post-content');
+        contentDiv.innerHTML = htmlContent;
+        
+        // Convert images to figures with captions
+        contentDiv.querySelectorAll('img').forEach((img) => {
+          const altText = img.getAttribute('alt');
+          if (altText) {
+            const figure = document.createElement('figure');
+            const figcaption = document.createElement('figcaption');
+            figcaption.textContent = altText;
+            
+            // Replace img with figure containing img and figcaption
+            img.parentNode.insertBefore(figure, img);
+            figure.appendChild(img);
+            figure.appendChild(figcaption);
+            
+            // Remove alt attribute since it's now in the caption
+            img.removeAttribute('alt');
+          }
+        });
+        
+        // Highlight code blocks
+        contentDiv.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+        });
+        
+        // Generate table of contents
+        generateTOC(contentDiv);
+        
+        // Generate citation
+        generateCitation(title, author, date, window.location.href, citationKey);
+        
+        // Re-render MathJax
+        if (window.MathJax && window.MathJax.typesetPromise) {
+          MathJax.typesetPromise([contentDiv]).then(() => {
+            console.log('MathJax rendering complete');
+          }).catch((err) => {
+            console.error('MathJax rendering error:', err);
+          });
+        }
+        
+      } catch (error) {
+        console.error('Error loading markdown:', error);
+        document.getElementById('post-content').innerHTML = `<p>Error loading blog post: ${error.message}</p>`;
+      }
+    }
+
+    // Load markdown when page loads
+    document.addEventListener('DOMContentLoaded', loadMarkdown);
+  </script>
+</body>
+</html> 
